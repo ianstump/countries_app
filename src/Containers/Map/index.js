@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { Connect } from "react-redux"
+import { connect } from "react-redux"
 import L from "leaflet";
 
 const style = {
@@ -8,14 +8,18 @@ const style = {
 };
 
 function Map(props) {
-    const { coord } = props.coord
-    const center = [Object.values(coord)[0], Object.values(coord)[1]]
-    // create map
-    const mapRef = useRef(null);
+    const { latitude, longitude } = props
+    const center = [latitude, longitude]
+    console.log(center);
+    let mapElement = useRef(null);
+
     useEffect(() => {
-        mapRef.current = L.map("map", {
+        if (mapElement.current) {
+            mapElement.current.remove()
+        }
+        mapElement.current = L.map("map", {
             center: center,
-            zoom: 16,
+            zoom: 6,
             layers: [
                 L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png", {
                     attribution:
@@ -23,17 +27,18 @@ function Map(props) {
                 })
             ]
         });
-    }, [props.coord]);
 
-    // add marker
+    }, [center]);
 
-
-    return <div id="map" style={style} />;
+    return <div style={style} id="map" />;
 }
 
 const mapStateToProps = state => {
+    console.log(state.coord);
+
     return {
-        coord: state.coord
+        latitude: Object.values(state.coord)[0],
+        longitude: Object.values(state.coord)[1]
     }
 }
 

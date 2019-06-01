@@ -4,7 +4,7 @@ import './App.css';
 import CountryList from "../CountryList"
 import { GraphQLClient, ClientContext } from 'graphql-hooks'
 import CountryDetails from "../CountryDetails";
-import { Map } from 'react-leaflet';
+import Map from '../Map/index';
 
 
 const client = new GraphQLClient({
@@ -20,7 +20,7 @@ function App() {
 
         <ClientContext.Provider value={client}>
             <div className="App">
-                <Map className="Map" />
+                <Map />
                 <CountryList />
                 <CountryDetails />
             </div>
