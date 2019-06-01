@@ -9,14 +9,20 @@ const style = {
 
 function Map(props) {
     const { latitude, longitude } = props
-    const center = [latitude, longitude]
+
+    let center = [latitude, longitude]
+    if (center === undefined) {
+        console.log("fuck");
+
+    }
+
+
     console.log(center);
     let mapElement = useRef(null);
 
     useEffect(() => {
-        if (mapElement.current) {
-            mapElement.current.remove()
-        }
+        mapElement.current && mapElement.current.remove()
+
         mapElement.current = L.map("map", {
             center: center,
             zoom: 6,

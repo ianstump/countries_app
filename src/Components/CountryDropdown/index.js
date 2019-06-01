@@ -1,9 +1,9 @@
 import React from 'react';
 
 const CountryDrowdown = (props) => {
-    const {country} = props
+    const { country } = props
     return (
-        <option key={country.code} value={country.code}>
+        <option key={country.code} value={country.name}>
             {country.name}
         </option>
     );

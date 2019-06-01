@@ -1,7 +1,8 @@
 import React from "react"
-import {useQuery} from 'graphql-hooks'
+import { useQuery } from 'graphql-hooks'
 import CountryDrowdown from "../../Components/CountryDropdown";
-import {connect} from "react-redux"
+import { connect } from "react-redux"
+import { setCountry } from "../../Store/actions/actions";
 
 const GET_COUNTRIES = `
     {
@@ -15,11 +16,14 @@ const GET_COUNTRIES = `
 `;
 
 const CountryList = (props) => {
-    const {dispatch,selected}= props;
-    const {loading, error, data} = useQuery(GET_COUNTRIES)
+    console.log(props);
+
+    const { dispatch, selected } = props;
+    const { loading, error, data } = useQuery(GET_COUNTRIES)
 
     const setCountryHandler = (e) => {
-        dispatch({ type: 'ADD_SELECTED',payload:e.target.value })};
+        props.setCountry(e.target.value)
+    };
     if (loading) return 'Loading...';
     if (error) return 'Something Bad Happened';
 
@@ -27,7 +31,7 @@ const CountryList = (props) => {
         <select name="Country" value={selected} onChange={setCountryHandler}>
             {data.countries.map(country =>
                 <CountryDrowdown key={country.code} country={country} />)
-                }
+            }
         </select>
     );
 };
@@ -38,4 +42,10 @@ const mapStateToProps = (state) => {
     }
 };
 
-export default connect(mapStateToProps)(CountryList)
+const mapDispatchToProps = dispatch => {
+    return {
+        setCountry: (data) => dispatch(setCountry(data))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CountryList)
