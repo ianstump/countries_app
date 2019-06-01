@@ -13,6 +13,7 @@ const action = (data, coord) => {
 }
 
 export const setCountry = (data) => async (dispatch) => {
+    console.log(data);
 
     const response = await axios.get(`${GEO_URL}json?q=${data.replace(" ", "_")}&key=${GEO_API}`)
     const answer = await response.data

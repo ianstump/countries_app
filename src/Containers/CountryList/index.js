@@ -21,7 +21,9 @@ const CountryList = (props) => {
     const { dispatch, selected } = props;
     const { loading, error, data } = useQuery(GET_COUNTRIES)
 
-    const setCountryHandler = (e) => {
+    const setCountryHandler = (e, data) => {
+        console.log(e.target.name);
+
         props.setCountry(e.target.value)
     };
     if (loading) return 'Loading...';
