@@ -1,5 +1,4 @@
 import { GEO_URL, GEO_API } from "../../constants";
-import Axios from "axios";
 import axios from "axios"
 
 
