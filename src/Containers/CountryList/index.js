@@ -15,13 +15,13 @@ const GET_COUNTRIES = `
 `;
 
 const CountryList = (props) => {
-    const {dispatch,selected}= props
+    const {dispatch,selected}= props;
     const {loading, error, data} = useQuery(GET_COUNTRIES)
 
     const setCountryHandler = (e) => {
         dispatch({ type: 'ADD_SELECTED',payload:e.target.value })};
-    if (loading) return 'Loading...'
-    if (error) return 'Something Bad Happened'
+    if (loading) return 'Loading...';
+    if (error) return 'Something Bad Happened';
 
     return (
         <select name="Country" value={selected} onChange={setCountryHandler}>
@@ -30,12 +30,12 @@ const CountryList = (props) => {
                 }
         </select>
     );
-}
+};
 
 const mapStateToProps = (state) => {
     return {
         selected: state.selected
     }
-}
+};
 
 export default connect(mapStateToProps)(CountryList)
