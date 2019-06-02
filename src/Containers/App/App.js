@@ -9,6 +9,7 @@ import Map from '../Map/index';
 
 const client = new GraphQLClient({
     url: "https://countries.trevorblades.com"
+
 });
 
 

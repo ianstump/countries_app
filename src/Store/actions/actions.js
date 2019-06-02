@@ -1,8 +1,10 @@
 import { GEO_URL, GEO_API } from "../../constants";
 import axios from "axios"
+import { async } from "q";
+import { GET_CONTINENTS } from "../../queries";
 
 
-const action = (data, coord) => {
+const ADD_SELECTED = (data, coord) => {
     return {
         type: 'ADD_SELECTED',
         country: data,
@@ -12,10 +14,16 @@ const action = (data, coord) => {
 }
 
 export const setCountry = (data) => async (dispatch) => {
-    console.log(data);
-
     const response = await axios.get(`${GEO_URL}json?q=${data.replace(" ", "_")}&key=${GEO_API}`)
     const answer = await response.data
-    dispatch(action(data, answer.results[0].geometry))
+
+    dispatch(ADD_SELECTED(data, answer.results[0].geometry))
 }
 
+
+export const setContinent = (data) => async (dispatch) => {
+    const response = await axios.get(`${GEO_URL}json?q=${data.replace(" ", "_")}&key=${GEO_API}`)
+    const answer = await response.data
+
+
+}

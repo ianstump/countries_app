@@ -1,48 +1,29 @@
-import React from "react"
+import React, { useState } from "react"
 import { useQuery } from 'graphql-hooks'
 import CountryDrowdown from "../../Components/CountryDropdown";
 import { connect } from "react-redux"
 import { setCountry } from "../../Store/actions/actions";
+import { GET_CONTINENTS } from '../../queries';
+import SelectContainer from "../SelectContainer";
 
-const GET_COUNTRIES = `
-    {
-        countries {
-            name
-            code
-        }
-    
-    }
-    
-`;
 
 const CountryList = (props) => {
-    console.log(props);
+    const { selected } = props;
+    const { loading, error, data } = useQuery(GET_CONTINENTS)
 
-    const { dispatch, selected } = props;
-    const { loading, error, data } = useQuery(GET_COUNTRIES)
 
-    const setCountryHandler = (e, data) => {
-        console.log(e.target.name);
 
-        props.setCountry(e.target.value)
-    };
     if (loading) return 'Loading...';
     if (error) return 'Something Bad Happened';
 
     return (
-        <select name="Country" value={selected} onChange={setCountryHandler}>
-            {data.countries.map(country =>
-                <CountryDrowdown key={country.code} country={country} />)
-            }
-        </select>
+
+        <SelectContainer continents={data.continents} />
+
     );
 };
 
-const mapStateToProps = (state) => {
-    return {
-        selected: state.selected
-    }
-};
+
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -50,4 +31,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CountryList)
+export default connect(null, mapDispatchToProps)(CountryList)

@@ -12,12 +12,10 @@ function Map(props) {
 
     let center = [latitude, longitude]
     if (center === undefined) {
-        console.log("fuck");
 
     }
 
 
-    console.log(center);
     let mapElement = useRef(null);
 
     useEffect(() => {
@@ -40,7 +38,6 @@ function Map(props) {
 }
 
 const mapStateToProps = state => {
-    console.log(state.coord);
 
     return {
         latitude: Object.values(state.coord)[0],

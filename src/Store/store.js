@@ -5,6 +5,7 @@ import Coordinates from ".././country_coord"
 
 
 const initialState = {
+    continent: "EU",
     selected: "CH",
     coord: {
         "lat": "47.0000",
