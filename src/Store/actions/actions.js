@@ -17,8 +17,9 @@ const addSelected = (data, coord) => {
 
 export const setCountry = data => async dispatch => {
   const response = await axios.get(
-    `${GEO_URL}json?q=${data.replace(" ", "_")}&key=${GEO_API}`
+    `${GEO_URL}json?q=${data.toLowerCase()}&key=${GEO_API}`
   );
+
   const answer = await response.data;
 
   dispatch(addSelected(data, answer.results[0].geometry));

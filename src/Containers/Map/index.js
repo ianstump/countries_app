@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { connect } from "react-redux";
 import L from "leaflet";
+import { darkMapKey } from "../../constants";
 const style = {
   width: "100%",
   height: "300px"
@@ -8,8 +9,7 @@ const style = {
 
 function Map(props) {
   const lightMap = "http://{s}.tile.osm.org/{z}/{x}/{y}.png";
-  const darkMap =
-    "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png";
+  const darkMap = `https://{s}.tile.thunderforest.com/transport-dark/{z}/{x}/{y}.png?apikey=${darkMapKey}`;
   const iconColors = {
     grey:
       "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-grey.png",
@@ -40,7 +40,7 @@ function Map(props) {
         marker
       ]
     });
-  }, [center, darkMode, marker]);
+  }, [center, darkMode, marker, darkMap]);
 
   return <div style={style} className="map" id="map" />;
 }
