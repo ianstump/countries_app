@@ -32,7 +32,10 @@ The idea of using a Redux store is because the connection between components bec
 
 There can always be improvements, I started tinkering on the App more and more, and it feels like one could keep developing and developing without having an end.
 
-My future improvements: - instead of SASS, use Emotion (library I want to learn)
+My future improvements:
+
+- instead of SASS, use Emotion (library I want to learn)
+- The Geolocation is not that accurate, some small countries are not found, so it finds similar ones.
 
 ### What would you do differently if you had more time?
 
