@@ -20,10 +20,9 @@ export const GET_CONTINENTS = `
         }
       }
     }
-`
+`;
 
-
-export const GET_DETAILS = (selected) => `
+export const GET_DETAILS = selected => `
 {
   country(code: "${selected}") {
     name

@@ -1,4 +1,3 @@
-
 $dark-mode: black;
 
 .App {
@@ -6,27 +5,24 @@ $dark-mode: black;
   display: flex;
   flex-direction: column;
   background-color: white;
-  height:100vh;
-  transition: 0.5s
+  height: 100vh;
+  transition: 0.5s;
 }
-
 
 .App-dark {
   text-align: center;
   display: flex;
   flex-direction: column;
   background-color: $dark-mode;
-  color:white;
-  height:100vh;
-  transition: 0.5s
-
+  color: white;
+  height: 100vh;
+  transition: 0.5s;
 }
 
-.Map{
+.Map {
   height: 300px;
-  
 }
-.darkmode-container{
+.darkmode-container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -42,7 +38,7 @@ $dark-mode: black;
     margin-left: 20px;
   }
   .switch::after {
-    content: 'off';
+    content: "off";
     position: absolute;
     width: 40px;
     height: 20px;
@@ -52,10 +48,10 @@ $dark-mode: black;
     left: 1px;
     transition: all 0.3s;
   }
-  input[type='checkbox']:checked + .switch::after {
+  input[type="checkbox"]:checked + .switch::after {
     transform: translateX(40px);
   }
-  input[type='checkbox']:checked + .switch {
+  input[type="checkbox"]:checked + .switch {
     background-color: #7983ff;
   }
   .offscreen {

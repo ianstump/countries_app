@@ -1,9 +1,25 @@
-.data-container{
+.data-container {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  align-items: center;
+  .title {
+    border-bottom: 1px solid black;
+  }
+}
+.skeleton {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  align-items: center;
+  .skeleton-container {
+    width: 500px;
+    flex-flow: column;
     display: flex;
-    flex-direction: column;
-    width: 100vw;
-    align-items: center;
-    .title{
-        border-bottom: 1px solid black;
+    margin-bottom: 20px;
+
+    .skeleton_title {
+      margin-bottom: 20px;
     }
+  }
 }
