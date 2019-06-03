@@ -10,7 +10,12 @@ const CountryList = () => {
     return <Skeleton width={100} className="skeleton-element" count={10} />;
   if (error) console.log(error);
 
-  return <SelectContainer continents={data.continents} />;
+  return (
+    <div>
+      <h3>Please select a continent and a country</h3>
+      <SelectContainer continents={data.continents} />
+    </div>
+  );
 };
 
 export default CountryList;
