@@ -20,12 +20,13 @@ function CountryDetails(props) {
       </div>
     );
   if (error) console.log(error);
-
+  const lightLine = "lightLine";
+  const darkLine = "darkLine";
   const { country } = data;
   return (
     country && (
       <div className="data-container">
-        <h1 className="title">
+        <h1 className={(props.darkMode && darkLine) || lightLine}>
           {data.country.emoji} {data.country.name} ({data.country.native})
         </h1>
         <p>Currencies: {data.country.currency}</p>
@@ -42,7 +43,8 @@ function CountryDetails(props) {
 
 const mapStateToProps = state => {
   return {
-    selected: state.selected
+    selected: state.selected,
+    darkMode: state.darkMode
   };
 };
 

@@ -3,8 +3,11 @@
   flex-direction: column;
   width: 100vw;
   align-items: center;
-  .title {
+  .lightLine {
     border-bottom: 1px solid black;
+  }
+  .darkLine {
+    border-bottom: 1px solid white;
   }
 }
 .skeleton {
