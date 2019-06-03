@@ -42,10 +42,5 @@ function App(props) {
     </ClientContext.Provider>
   );
 }
-// const mapDispatchToProps = dispatch => {
-//     return {
-//         setDarkMode: () => dispatch(setDarkMode),
-//     }
-// }
 
 export default connect()(App);
