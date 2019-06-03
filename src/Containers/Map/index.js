@@ -8,7 +8,7 @@ const style = {
 };
 
 function Map(props) {
-  const lightMap = "http://{s}.tile.osm.org/{z}/{x}/{y}.png";
+  const lightMap = `https://tile.thunderforest.com/neighbourhood/{z}/{x}/{y}.png?apikey=${darkMapKey}`;
   const darkMap = `https://{s}.tile.thunderforest.com/transport-dark/{z}/{x}/{y}.png?apikey=${darkMapKey}`;
   const iconColors = {
     grey:
@@ -20,8 +20,8 @@ function Map(props) {
   var icon = new L.Icon({
     iconUrl: (darkMode && iconColors.grey) || iconColors.blue
   });
-
   let center = [latitude, longitude];
+
   let marker = L.marker(center, { icon: icon });
 
   let mapElement = useRef(null);
@@ -40,7 +40,7 @@ function Map(props) {
         marker
       ]
     });
-  }, [center, darkMode, marker, darkMap]);
+  }, [center, darkMode, marker, darkMap, lightMap]);
 
   return <div style={style} className="map" id="map" />;
 }
