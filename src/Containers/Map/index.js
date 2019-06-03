@@ -40,7 +40,7 @@ function Map(props) {
         marker
       ]
     });
-  }, [center, darkMode]);
+  }, [center, darkMode, marker]);
 
   return <div style={style} className="map" id="map" />;
 }

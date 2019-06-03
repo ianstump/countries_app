@@ -19,8 +19,7 @@ function CountryDetails(props) {
         </div>
       </div>
     );
-
-  if (error) return console.log(error);
+  if (error) console.log(error);
 
   const { country } = data;
   return (
@@ -33,7 +32,7 @@ function CountryDetails(props) {
         <h3>Languages:</h3>
         <ul>
           {data.country.languages.map(language => {
-            return <li>{language.name}</li>;
+            return <li key={language.code}>{language.name}</li>;
           })}
         </ul>
       </div>

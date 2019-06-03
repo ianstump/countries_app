@@ -13,11 +13,10 @@ const client = new GraphQLClient({
 
 function App(props) {
   const [theme, settheme] = useState("App");
-  console.log(props.dispatch);
 
   const darkModeHandler = () => {
-    (theme == "App" && settheme("App-dark")) ||
-      (theme == "App-dark" && settheme("App"));
+    (theme === "App" && settheme("App-dark")) ||
+      (theme === "App-dark" && settheme("App"));
     props.dispatch(setDarkMode);
   };
 
@@ -30,10 +29,10 @@ function App(props) {
             onClick={darkModeHandler}
             type="checkbox"
             id="toggle"
-            class="offscreen"
+            className="offscreen"
             placeholder="darkmode"
           />
-          <label for="toggle" class="switch" />
+          <label htmlFor="toggle" className="switch" />
         </div>
 
         <Map />
