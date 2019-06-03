@@ -2,40 +2,44 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux';
 import CountryDrowdown from '../../Components/CountryDropdown/index';
 import { setContinent, setCountry } from '../../Store/actions/actions';
+import "./index.scss"
 
 const SelectContainer = (props) => {
-    const { continents, setCountry } = props
-    const [cont, setcontinent] = useState(props.continent)
+    const { continents, setCountry, setContinent } = props
+    const [cont, setcont] = useState(props.continent)
 
-    const ContinentHandler = (e, data) => {
-        setcontinent(e.target.value)
-        props.setContinent(e.target.value)
-
-
+    const ContinentHandler = (e) => {
+        setcont(e.target.value)
+        setContinent(e.target.value)
     }
-    const setCountryHandler = (e, data) => {
+    const setCountryHandler = (e) => {
 
         setCountry(e.target.value)
     };
 
     const selectedContinent = continents.filter(continent => continent.code === cont)
     return (
-        <div>
+        <div className="select"  >
             <select name="Continents" value={cont || props.continent} onChange={ContinentHandler}>
                 {continents.map(continent => {
-                    return < option value={continent.code}> {continent.name}</option>
+                    return < option key={continent.code} value={continent.code}> {continent.name}</option>
                 })
                 }
             </select>
+
+
             <select name="Country" value={props.selected} onChange={setCountryHandler}>
                 {selectedContinent[0].countries.map(country =>
                     <CountryDrowdown key={country.code} country={country} />
                 )}
 
             </select>
-        </div>
+        </div >
     )
 }
+
+
+
 const mapStateToProps = (state) => {
     return {
         selected: state.selected,

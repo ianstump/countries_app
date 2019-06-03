@@ -1,37 +1,26 @@
 import React from 'react';
-import {connect} from "react-redux"
-import {useQuery} from "graphql-hooks";
-
+import { connect } from "react-redux"
+import { useQuery } from "graphql-hooks";
+import { GET_DETAILS } from '../../queries';
+import "./index.scss"
 
 function CountryDetails(props) {
-    const {selected} = props
+    const { selected } = props
 
-    const GET_DETAILS = `
-    {
-      country(code: "${selected}") {
-        name
-        native
-        emoji
-        currency
-        languages {
-          code
-          name
-        }
-  }
-}
-`;
-
-    const {loading, error, data} = useQuery(GET_DETAILS)
+    const { loading, error, data } = useQuery(GET_DETAILS(selected))
     if (loading) return 'Loading...'
     if (error) return 'Something Bad Happened'
-    console.log(selected)
-    const {country} = data
+    console.log(data.country)
+    const { country } = data
     return (
-        country && <div>
-            <h1>{data.country.name}</h1>
-            <p>{data.country.native}</p>
-            <p>{data.country.emoji}</p>
-            <p>{data.country.currency}</p>
+        country && <div className="data-container">
+            <h1 className="title">{data.country.emoji} {data.country.name} ({data.country.native})</h1>
+            <p>Currencies: {data.country.currency}</p>
+            <h3>Languages:</h3>
+            <ul>{data.country.languages.map(language => {
+                return <li>{language.name}</li>
+            })}</ul>
+
 
 
         </div>

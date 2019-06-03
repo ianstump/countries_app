@@ -1,6 +1,5 @@
 import { applyMiddleware, compose, createStore } from "redux";
 import thunk from "redux-thunk";
-import Coordinates from ".././country_coord"
 
 
 
@@ -10,7 +9,8 @@ const initialState = {
     coord: {
         "lat": "47.0000",
         "lng": "8.0000"
-    }
+    },
+    darkMode: false,
 }
 
 const reducer = (state = initialState, action) => {
@@ -20,11 +20,21 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 selected: action.country,
                 coord: action.coord
-
             }
+        case "ADD_CONTINENT":
 
+            return {
+                ...state,
+                continent: action.continent
+            }
+        case "ADD_DARKMODE":
+            return {
+                ...state,
+                darkMode: !state.darkMode
+            }
         default:
             return state
+
     }
 }
 

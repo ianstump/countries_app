@@ -1,0 +1,30 @@
+.select {
+    position: relative;
+    display: flex;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    width: 100vw;
+    justify-content: center;
+
+}    .select select {
+        font-family: 'Arial';
+        cursor: pointer;
+        padding: 10px 15px;
+        outline: 0;
+        border: 0px solid #000000;
+        border-radius: 100px;
+        background: #f3f3f3;
+        color: #7b7b7b;
+        appearance: none;
+    }
+        .select select:hover,
+        .select select:focus {
+            color: #000000;
+            background: #e7e7e7;
+
+        }
+        .select select:disabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+    

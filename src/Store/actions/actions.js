@@ -1,12 +1,12 @@
-import { GEO_URL, GEO_API } from "../../constants";
+import { GEO_URL, GEO_API, ADD_SELECTED, ADD_CONTINENT, ADD_DARKMODE } from "../../constants";
 import axios from "axios"
 import { async } from "q";
 import { GET_CONTINENTS } from "../../queries";
 
 
-const ADD_SELECTED = (data, coord) => {
+const addSelected = (data, coord) => {
     return {
-        type: 'ADD_SELECTED',
+        type: ADD_SELECTED,
         country: data,
         coord: coord,
 
@@ -17,13 +17,22 @@ export const setCountry = (data) => async (dispatch) => {
     const response = await axios.get(`${GEO_URL}json?q=${data.replace(" ", "_")}&key=${GEO_API}`)
     const answer = await response.data
 
-    dispatch(ADD_SELECTED(data, answer.results[0].geometry))
+    dispatch(addSelected(data, answer.results[0].geometry))
 }
 
+const addContinent = (data) => {
+    return {
+        type: ADD_CONTINENT,
+        continent: data
+    }
+}
 
 export const setContinent = (data) => async (dispatch) => {
-    const response = await axios.get(`${GEO_URL}json?q=${data.replace(" ", "_")}&key=${GEO_API}`)
-    const answer = await response.data
+    dispatch(addContinent(data))
+}
 
+export const setDarkMode = {
+
+    type: ADD_DARKMODE
 
 }

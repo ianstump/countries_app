@@ -21,3 +21,19 @@ export const GET_CONTINENTS = `
       }
     }
 `
+
+
+export const GET_DETAILS = (selected) => `
+{
+  country(code: "${selected}") {
+    name
+    native
+    emoji
+    currency
+    languages {
+      code
+      name
+    }
+}
+}
+`;
