@@ -8,6 +8,9 @@ In the project directory, you can run:
 
 Go to **http://localhost:7050/**
 
+It is also deployed with Heroku:
+**https://powerful-brook-31480.herokuapp.com/**
+
 ### Main libraries used:
 
 - React
