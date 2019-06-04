@@ -1,5 +1,6 @@
 import { applyMiddleware, compose, createStore } from "redux";
 import thunk from "redux-thunk";
+import { ADD_SELECTED, ADD_CONTINENT, ADD_DARKMODE } from "../constants";
 
 const initialState = {
   continent: "EU",
@@ -13,18 +14,18 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case "ADD_SELECTED":
+    case ADD_SELECTED:
       return {
         ...state,
         selected: action.country,
         coord: action.coord
       };
-    case "ADD_CONTINENT":
+    case ADD_CONTINENT:
       return {
         ...state,
         continent: action.continent
       };
-    case "ADD_DARKMODE":
+    case ADD_DARKMODE:
       return {
         ...state,
         darkMode: !state.darkMode
