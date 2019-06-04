@@ -6,9 +6,7 @@ import Skeleton from "react-loading-skeleton";
 
 import "./index.scss";
 
-function CountryDetails(props) {
-  const { selected } = props;
-
+function CountryDetails({ selected, darkMode }) {
   const { loading, error, data } = useQuery(GET_DETAILS(selected));
   if (loading)
     return (
@@ -26,7 +24,7 @@ function CountryDetails(props) {
   return (
     country && (
       <div className="data-container">
-        <h1 className={(props.darkMode && darkLine) || lightLine}>
+        <h1 className={(darkMode && darkLine) || lightLine}>
           {data.country.emoji} {data.country.name} ({data.country.native})
         </h1>
         <p>Currencies: {data.country.currency}</p>

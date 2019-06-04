@@ -1,6 +1,7 @@
-import { applyMiddleware, compose, createStore } from "redux";
+import { applyMiddleware, createStore } from "redux";
 import thunk from "redux-thunk";
 import { ADD_SELECTED, ADD_CONTINENT, ADD_DARKMODE } from "../constants";
+import composeEnhancers from "./storeEnhancers";
 
 const initialState = {
   continent: "EU",
@@ -34,11 +35,6 @@ const reducer = (state = initialState, action) => {
       return state;
   }
 };
-
-const composeEnhancers =
-  typeof window === "object" && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})
-    : compose;
 
 const enhancer = composeEnhancers(applyMiddleware(thunk));
 

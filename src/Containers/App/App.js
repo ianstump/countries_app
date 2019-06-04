@@ -2,22 +2,19 @@ import React, { useState } from "react";
 import "./App.scss";
 import { connect } from "react-redux";
 import CountryList from "../CountryList";
-import { GraphQLClient, ClientContext } from "graphql-hooks";
+import { ClientContext } from "graphql-hooks";
 import CountryDetails from "../CountryDetails";
 import Map from "../Map/index";
 import { setDarkMode } from "../../Store/actions/actions";
+import { client } from "../../constants";
 
-const client = new GraphQLClient({
-  url: "https://countries.trevorblades.com"
-});
-
-function App(props) {
+function App({ setDarkMode }) {
   const [theme, settheme] = useState("App");
 
   const darkModeHandler = () => {
     (theme === "App" && settheme("App-dark")) ||
       (theme === "App-dark" && settheme("App"));
-    props.dispatch(setDarkMode);
+    setDarkMode();
   };
 
   return (
@@ -42,5 +39,13 @@ function App(props) {
     </ClientContext.Provider>
   );
 }
+const mapDispatchToProps = dispatch => {
+  return {
+    setDarkMode: () => dispatch(setDarkMode())
+  };
+};
 
-export default connect()(App);
+export default connect(
+  null,
+  mapDispatchToProps
+)(App);

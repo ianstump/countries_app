@@ -19,6 +19,7 @@ const SelectContainer = props => {
   const selectedContinent = continents.filter(
     continent => continent.code === cont
   );
+
   return (
     <div className="select">
       <select

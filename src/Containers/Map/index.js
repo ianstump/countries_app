@@ -1,28 +1,21 @@
 import React, { useEffect, useRef } from "react";
 import { connect } from "react-redux";
+import { iconColors, darkMap, lightMap } from "../../constants";
 import L from "leaflet";
-import { darkMapKey } from "../../constants";
 const style = {
   width: "100%",
   height: "300px"
 };
 
 function Map(props) {
-  const lightMap = `https://tile.thunderforest.com/neighbourhood/{z}/{x}/{y}.png?apikey=${darkMapKey}`;
-  const darkMap = `https://{s}.tile.thunderforest.com/transport-dark/{z}/{x}/{y}.png?apikey=${darkMapKey}`;
-  const iconColors = {
-    grey:
-      "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-grey.png",
-    blue:
-      "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-blue.png"
-  };
   const { latitude, longitude, darkMode } = props;
-  var icon = new L.Icon({
+  const iconMarker = new L.Icon({
     iconUrl: (darkMode && iconColors.grey) || iconColors.blue
   });
+
   let center = [latitude, longitude];
 
-  let marker = L.marker(center, { icon: icon });
+  let marker = L.marker(center, { icon: iconMarker });
 
   let mapElement = useRef(null);
 
@@ -40,7 +33,7 @@ function Map(props) {
         marker
       ]
     });
-  }, [center, darkMode, marker, darkMap, lightMap]);
+  }, [center, darkMode, marker]);
 
   return <div style={style} className="map" id="map" />;
 }

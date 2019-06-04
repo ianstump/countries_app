@@ -36,6 +36,12 @@ export const setContinent = data => async dispatch => {
   dispatch(addContinent(data));
 };
 
-export const setDarkMode = {
-  type: ADD_DARKMODE
+export const setDarkMode = () => dispatch => {
+  dispatch(darkModeAction());
+};
+
+const darkModeAction = () => {
+  return {
+    type: ADD_DARKMODE
+  };
 };

@@ -1,7 +1,6 @@
 import React from "react";
 
-const CountryDrowdown = props => {
-  const { country } = props;
+const CountryDrowdown = ({ country }) => {
   return (
     <option key={country.code} value={country.code}>
       {country.name}
